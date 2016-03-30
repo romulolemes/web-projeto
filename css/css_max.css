@@ -1,0 +1,158 @@
+body{
+  margin:0px;
+}
+
+@font-face {
+  font-family: lol;
+  src: url(../fonte/Friz.ttf);
+}
+
+h1{ 
+  margin: 0px;
+  font-family:lol; 
+  font-size:48px;
+}
+
+header {
+  background-color:black;
+  color:white;
+  text-align:center;
+  /*padding:5px;*/
+}
+
+nav {
+  height:80%;
+  width:20%;
+  float:right;
+}
+
+nav img{
+  padding-left: 5px;
+  max-width:100%; 
+  width:250px; 
+  height:100px; 
+  float:left;
+}
+
+nav p{
+  padding-left: 10px;
+  clear: left;
+}
+
+section {
+  width:80%;
+  height:80%;
+  background-color:#525252;
+  float: left;	
+}
+
+section p{
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-family:lol; 
+}
+
+footer {
+  clear:left;
+  background-color:black;
+  color:white;
+  text-align:center;
+  padding:5px;
+}
+
+.centralizar{
+  text-align: center;
+}
+
+.btn{
+  width: 400px;
+  font-family: arial;
+  font-size:14px;
+  text-transform: uppercase;
+  font-weight:700;
+  border: none;
+  padding: 10px;
+  cursor:pointer;
+  border-radius: 10px;
+}
+
+.btn-blue{
+  background:#0000FF;
+  /*background:#006000;*/
+  color:#fff;
+  box-shadow: 0 5px 0 #0000FF;
+  /*box-shadow: 0 5px 0 #006000;*/
+}
+
+.btn-red{
+  background:#FF0000;
+  color:#fff;
+  box-shadow: 0 5px 0 #FF0000;
+}
+
+.btn-blue:hover{
+  background:#0000FF;
+  /*background:#006000;*/
+  color:#fff;
+  /*box-shadow: 0 5px 0 #003f00;*/
+  box-shadow: 0 5px 0 #00008B;
+}
+
+.btn-red:hover{
+  background:#FF0000;
+  color:#fff;
+  box-shadow: 0 5px 0 #860000;
+}
+
+.btn-blue:active{
+  position: relative;
+  top:5px;
+  box-shadow: none;
+}
+
+.btn-red:active{
+  position: relative;
+  top:5px;
+  box-shadow: none;
+}
+
+
+
+
+
+.btn-lol{
+  background-color: #FFD65E; background-image: -webkit-gradient(linear, left top, left bottom, from(#FFD65E), to(#FEBF04));
+  background-image: -webkit-linear-gradient(top, #FFD65E, #FEBF04);
+  background-image: -moz-linear-gradient(top, #FFD65E, #FEBF04);
+  background-image: -ms-linear-gradient(top, #FFD65E, #FEBF04);
+  background-image: -o-linear-gradient(top, #FFD65E, #FEBF04);
+  background-image: linear-gradient(to bottom, #FFD65E, #FEBF04);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#FFD65E, endColorstr=#FEBF04);
+  color:#63460C;
+  box-shadow: 0 5px 0 #63460C;
+  /*box-shadow: 0 5px 0 #006000;*/
+}
+
+.btn-lol:hover{
+  background-image: -webkit-linear-gradient(top, #FFC92B, #CE9A01);
+  background-image: -moz-linear-gradient(top, #FFC92B, #CE9A01);
+  background-image: -ms-linear-gradient(top, #FFC92B, #CE9A01);
+  background-image: -o-linear-gradient(top, #FFC92B, #CE9A01);
+  background-image: linear-gradient(to bottom, #FFC92B, #CE9A01);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#FFC92B, endColorstr=#CE9A01);
+  color:#63460C;
+  /*box-shadow: 0 5px 0 #003f00;*/
+  box-shadow: 0 5px 0 #63460C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

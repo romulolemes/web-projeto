@@ -15,10 +15,21 @@ h1{
 }
 
 header {
-  background-color:black;
-  color:white;
+  background-color:black; 
   text-align:center;
   /*padding:5px;*/
+}
+
+
+#header-login {
+  float: right;
+  margin-top: 4%;
+  margin-right: 5%;
+}
+
+#header-login .btn-lol{
+  display: block;
+  margin-bottom: 10px;
 }
 
 nav {
@@ -59,6 +70,14 @@ footer {
   background-color:black;
   color:white;
   text-align:center;
+  bottom:0;
+  width:100%;
+}
+
+#conteudo-all { 
+  height: auto; 
+  min-height: 100%; 
+  background-color:#525252;
 }
 
 .centralizar{
@@ -66,15 +85,15 @@ footer {
 }
 
 .btn{
-  width: 400px;
+  width: 150px;
   font-family: arial;
-  font-size:14px;
+  font-size:11px;
   text-transform: uppercase;
   font-weight:700;
   border: none;
-  padding: 10px;
+  padding: 4px;
   cursor:pointer;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 .btn-lol{
@@ -133,21 +152,15 @@ footer {
   background: -o-linear-gradient(#eeeeee 0%, #cccccc 100%);
   background: linear-gradient(#eeeeee 0%, #cccccc 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
-  
   height:45px;
   text-align:center;
-  
   font:bold 14px/45px sans-serif;
   border-top-left-radius:5px;
   border-top-right-radius:5px;
-  
   border-bottom:1px solid #bfc3c5;
   box-shadow: 1px 0px 3px #dedede;
-  
   color:#555555;
   text-shadow: 1px 0px 1px white;
-    
-  
 }
 
 
@@ -189,12 +202,8 @@ footer {
   box-shadow: 1px 0px 3px #dedede;
   
   color:#555555;
-  text-shadow: 1px 0px 1px white;
-    
-  
+  text-shadow: 1px 0px 1px white;   
 }
-
-
 
 .input-div{
   margin:20px;
@@ -213,6 +222,13 @@ footer {
   border:1px solid #bfc4c6;      
 }
 
+#conteudo {
+  display: -webkit-box;           /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;              /* OLD - Firefox 19- (doesn't work very well) */
+  display: -ms-flexbox;           /* TWEENER - IE 10 */
+  display: -webkit-flex;          /* NEW - Chrome */
+  display: flex;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
 
 #botoes{
   width:310px;
@@ -237,6 +253,73 @@ footer {
   box-shadow: none;
 }
 
+a:link 
+{ 
+ text-decoration:none; 
+} 
 
 
+
+
+
+
+
+
+
+
+
+
+
+#listCamp-box{
+  background-color:#676767;
+  width:1000px;
+  
+  margin:30px auto 0px;
+  border-radius:10px;
+  box-shadow:0px 0px 50px black;
+}
+
+#listCamp-interno{
+  width:1000px;
+  
+
+  background-color: #676767;
+  position: absolute;
+  margin-top: 30px;
+  border-radius: 50px;
+
+
+  box-shadow:0px 0px 50px black;
+  overflow:hidden;
+}
+
+#camp{
+  width:960px;
+  height:480px;
+  border-radius:5px;
+  margin:20px;
+  background-color: gray;
+}
+
+#camp h2{
+  padding-top: 15px;
+}
+
+#camp-img{
+  width: 220px;
+  height: 400px;
+  margin-left: 30px;
+  /*background: url('../imagens/fundo.jpg');*/
+  overflow:hidden;
+  border-radius: 10px 150px 10px 150px;
+  display: inline-block;
+  /*background-color: red;*/
+}
+
+#conteudo-camp{
+  float: right;
+  display: inline-block;
+  width: 220px;
+  height: 400px;
+}
 

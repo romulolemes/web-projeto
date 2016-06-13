@@ -1,0 +1,26 @@
+{
+  "name": "web-projeto",
+  "version": "0.0.1",
+  "description": "Trabalho pratico de programação WEB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/romulolemes/web-projeto.git"
+  },
+  "author": "Romulo Lemes",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/romulolemes/web-projeto/issues"
+  },
+  "dependencies": {
+    "hbs": "~4.0.0",
+    "express": "~4.13.4",
+    "underscore": "~1.8.3",
+    "cookie-parser": "~1.4.3",
+    "body-parser": "~1.15.1"
+  }
+}

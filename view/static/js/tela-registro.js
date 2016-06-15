@@ -1,74 +1,88 @@
 var botaoRegistrar = document.getElementById('botao-make-register');
+var boxErroRegistro = document.getElementById('box-erro-registro');
+var nomeGamesOn = document.getElementById('nomeGamesOn');
+var emailGamesOn = document.getElementById('emailGamesOn');
+var userGamesOn = document.getElementById('userGamesOn');
+var senhaGamesOn = document.getElementById('senhaGamesOn');
+var confirmPasswordGamesOn = document.getElementById('confirmPasswordGamesOn');
 
-botaoRegistrar.addEventListener('click', function(e) {
-	var boxErroRegistro = document.getElementById('box-erro-registro');
-	var nomeGameOn = document.getElementById('nomeGameOn');
-	var emailGameOn = document.getElementById('emailGameOn');
-  var userGameOn = document.getElementById('userGameOn');
-  var senhaGameOn = document.getElementById('senhaGameOn');
-  var confirmPasswordGameOn = document.getElementById('confirmPasswordGameOn');
 
+botaoRegistrar.addEventListener('click', registrar);
+nomeGamesOn.addEventListener("keyup", clickRegister);
+emailGamesOn.addEventListener("keyup", clickRegister);
+userGamesOn.addEventListener("keyup", clickRegister);
+senhaGamesOn.addEventListener("keyup", clickRegister);
+confirmPasswordGamesOn.addEventListener("keyup", clickRegister);
+
+function clickRegister(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        document.getElementById("botao-make-register").click();
+    }
+}
+
+function registrar(e){
 	var makeRequest = true;
-	removerFocusIncorreto(nomeGameOn, emailGameOn, userGameOn, senhaGameOn, confirmPasswordGameOn);
+	removerFocusIncorreto(nomeGamesOn, emailGamesOn, userGamesOn, senhaGamesOn, confirmPasswordGamesOn);
 	ocultarBox(boxErroRegistro);
 	var stringErro = 'Campos incorretos <br>';
-	if(nomeGameOn.value === '' || nomeGameOn.value === 'undefined'){
+	if(nomeGamesOn.value === '' || nomeGamesOn.value === 'undefined'){
 			stringErro += '- Nome em branco <br>';
-			focarCampoIncorreto(nomeGameOn);
+			focarCampoIncorreto(nomeGamesOn);
 			makeRequest = false;
-	}else if(nomeGameOn.value.length < 6){
+	}else if(nomeGamesOn.value.length < 6){
 		stringErro += '- Nome sem tamanho minimo (minimo 6) <br>';
-		focarCampoIncorreto(nomeGameOn);
+		focarCampoIncorreto(nomeGamesOn);
 		makeRequest = false;
 	}
 
-	if(!validateEmail(emailGameOn.value)){
+	if(!validateEmail(emailGamesOn.value)){
 		stringErro += '- Email incorreto <br>';
-		focarCampoIncorreto(emailGameOn);
+		focarCampoIncorreto(emailGamesOn);
 		makeRequest = false;
 	}
 
-	if(userGameOn.value === '' || userGameOn.value === 'undefined'){
+	if(userGamesOn.value === '' || userGamesOn.value === 'undefined'){
 			stringErro += '- Usuário em branco <br>';
-			focarCampoIncorreto(userGameOn);
+			focarCampoIncorreto(userGamesOn);
 			makeRequest = false;
-	}else if(userGameOn.value.length < 6){
+	}else if(userGamesOn.value.length < 6){
 		stringErro += '- Usuário sem tamanho minimo (minimo 6) <br>';
-		focarCampoIncorreto(userGameOn);
+		focarCampoIncorreto(userGamesOn);
 		makeRequest = false;
 	}
 
 	var booleanSenhaBranco = false;
-	if(senhaGameOn.value === '' || senhaGameOn.value === 'undefined'){
+	if(senhaGamesOn.value === '' || senhaGamesOn.value === 'undefined'){
 			stringErro += '- Senha em branco <br>';
-			focarCampoIncorreto(senhaGameOn);
-			focarCampoIncorreto(confirmPasswordGameOn);
+			focarCampoIncorreto(senhaGamesOn);
+			focarCampoIncorreto(confirmPasswordGamesOn);
 			makeRequest = false;
 			booleanSenhaBranco = true;
-	}else if(senhaGameOn.value.length < 6){
+	}else if(senhaGamesOn.value.length < 6){
 		stringErro += '- Senha sem tamanho minimo (minimo 6) <br>';
-		focarCampoIncorreto(senhaGameOn);
+		focarCampoIncorreto(senhaGamesOn);
 		makeRequest = false;
-	}else if(senhaGameOn.value.indexOf(' ') !== -1){
+	}else if(senhaGamesOn.value.indexOf(' ') !== -1){
 		stringErro += '- Senha com espaço em branco <br>';
-		focarCampoIncorreto(senhaGameOn);
+		focarCampoIncorreto(senhaGamesOn);
 		makeRequest = false;
 	}
 
 	if(!booleanSenhaBranco){
-		if(senhaGameOn.value !== confirmPasswordGameOn.value){
+		if(senhaGamesOn.value !== confirmPasswordGamesOn.value){
 			stringErro += '- Senha é confirmacao não são iguais <br>';
-			focarCampoIncorreto(senhaGameOn);
-			focarCampoIncorreto(confirmPasswordGameOn);
+			focarCampoIncorreto(senhaGamesOn);
+			focarCampoIncorreto(confirmPasswordGamesOn);
 			makeRequest = false;
 		}
 	}
 
   var data = {
-    nomeGameOn: nomeGameOn.value,
-		emailGameOn: emailGameOn.value,
-		userGameOn: userGameOn.value,
-		loginGameOn: encode(userGameOn.value + '-' + senhaGameOn.value)
+    nomeGamesOn: nomeGamesOn.value,
+		emailGamesOn: emailGamesOn.value,
+		userGamesOn: userGamesOn.value,
+		loginGamesOn: encode(userGamesOn.value + '-' + senhaGamesOn.value)
 	};
 
 	if(!makeRequest){
@@ -81,16 +95,23 @@ botaoRegistrar.addEventListener('click', function(e) {
 		request.onreadystatechange = function() {
 				if (request.readyState == XMLHttpRequest.DONE) {
 					if(request.status === 200){
-						window.location.href = '/';
+						var response = JSON.parse(request.responseText);
+						if(response.success === true){
+							window.location.href = '/';
+						}else{
+							boxErroRegistro.classList.remove('oculto');
+							boxErroRegistro.innerHTML = response.message;
+						}
+					}else{
+							alert(request.responseText);
 					}
-					alert(request.responseText);
 				}
 		}
 		request.send(JSON.stringify(data));
 	}
 	//alert(JSON.stringify(data));box-erro-registro
 
-});
+}
 
 function ocultarBox(box){
 	if(!box.classList.contains('oculto')){

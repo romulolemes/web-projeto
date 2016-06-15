@@ -19,6 +19,8 @@ header {
   color:white;
   text-align:center;
   padding: 10px;
+  font-family:lol;
+  color: #FFFFFF;
 }
 
 nav {
@@ -116,7 +118,6 @@ footer {
 
 #login-box-interno{
   width:270px;
-  height:240px;
   background-color:#fdfdfd;
   position:absolute;
   margin:0px;
@@ -154,7 +155,6 @@ footer {
 
 #registro-box-interno{
   width:270px;
-  height:450px;
   background-color:#fdfdfd;
   position:absolute;
   border-radius:5px;
@@ -196,6 +196,17 @@ footer {
   border:1px solid #bfc4c6;
 }
 
+#box-erro-registro {
+  margin:20px;
+  padding:5px;
+  background-color:red;
+  border-radius:3px;
+  font: 12px sans-serif;
+}
+
+.oculto {
+  display: none;
+}
 
 #botoes{
   width:100px;
@@ -222,6 +233,7 @@ footer {
 
 #botao-make-login{
   float:right;
+  margin-bottom: 15px;
   background-color: #cccccc;
   padding: 5px 15px;
   font: bold 12px sans-serif;
@@ -240,6 +252,7 @@ footer {
 
 #botao-make-register{
   float:right;
+  margin-bottom: 15px;
   background-color: #cccccc;
   padding: 5px 15px;
   font: bold 12px sans-serif;

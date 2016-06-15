@@ -17,7 +17,13 @@ h1{
 header {
   background-color:black;
   text-align:center;
-  /*padding:5px;*/
+  font-family:lol;
+  color: #FFFFFF;
+}
+
+header p{
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 
@@ -88,6 +94,7 @@ nav {
 
 section h1{
   margin-top: 50px;
+  padding-right: 5px;
 }
 
 section {
@@ -183,8 +190,6 @@ footer {
 
 #login-box-interno{
   width:360px;
-  height:240px;
-
   background-color:#fdfdfd;
   position:absolute;
   margin:10px;
@@ -320,6 +325,7 @@ footer {
 
 #botao-make-login{
   float:right;
+  margin-bottom: 15px;
   background-color: #cccccc;
   padding: 5px 15px;
   font: bold 12px sans-serif;

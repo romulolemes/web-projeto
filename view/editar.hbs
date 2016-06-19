@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+	<link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon" />
+	<title>Championship 2016</title>
+	<link rel="stylesheet" type="text/css" href="../css/css_max.css" media="screen and (min-width:920px)">
+	<link rel="stylesheet" type="text/css" href="../css/css_min.css" media="screen and (max-width:919px)">
+	<style>
+	.percentage-value{
+			width: {{porcentagem}};
+	}
+	</style>
+</head>
+
+<body>
+	<header>
+		<a href="../index.html"><img src="../imagens/logo.png" alt="Logo Games ON"></a>
+		<div id="header-login">
+			{{#if loginGamesOn}}
+				<p>Bem Vindo!</p>
+				<p>{{userGamesOn}}</p>
+				<a href="/logout"><button class="btn btn-lol">Sair</button></a>
+			{{else}}
+				<a href="registro.html"><button class="btn btn-lol">Registrar</button></a>
+				<a href="/login.html"><button class="btn btn-lol">Login</button></a>
+			{{/if}}
+		</div>
+	</header>
+	<div id="camp-title">
+		<img src="../imagens/camp3.jpg" alt="Campeonato RMA">
+		<div id="camp-title-box">
+			<h1 class="centralizar"> {{nome}} </h1>
+			<div class="percentage-box">
+				<div class="percentage-value">
+					<div class="percentage-text">
+						{{porcentagem}}
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div id="botao-editar">
+			{{#if editar}}
+				<a href="../editar/{{id}}">
+					<img id="img-editar" src="../imagens/editar.png" alt="Editar Campeonato">
+				</a>
+			{{/if}}
+		</div>
+	</div>
+	<div id="camp-conteudo">
+		<div id="camp-participantes" class="centralizar">
+			<h2>Participantes</h2>
+			<ul id="list-participates">
+				{{#each equipes}}
+					<li>{{this}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div id="camp-partidas" class="centralizar" >
+			<h2>Rodadas</h2>
+
+			<div id=maxRodadas class=oculto>{{RodadaMax}}</div>
+			<div id=idMax class=oculto>{{idMax}}</div>
+
+			<table id="table-partidas">
+				{{#rodadas}}
+					<tr>
+						<td colspan="7">Rodada {{rodada}}</td>
+					</tr>
+					{{#partidas}}
+						<tr>
+							{{#if editavel}}
+								<form action="/editar" method="POST" name=R{{../rodada}}#I{{id}}>
+									<td>
+										{{id}}
+										<input type="text" name="campeonato" value="{{../../id}}" class="oculto">
+										<input type="text" name="rodada" value="{{../rodada}}" class="oculto">
+										<input type="text" name="id" value="{{id}}" class="oculto">
+									</td>
+									<td>{{equipe1}}</td>
+									<td><input type="number" id="R{{../rodada}}id{{id}}E1" name="resultado-equipe1" min="0" required></td>
+									<td> X </td>
+									<td><input type="number" id="R{{../rodada}}id{{id}}E2"  name="resultado-equipe2" min="0" required></td>
+									<td>{{equipe2}}</td>
+									<td><input id="R{{../rodada}}id{{id}}S" type="button" value="" alt="Salvar Partida" class="salvar-resultado"> </td>
+								</form>
+							{{else}}
+								<td>{{id}}</td>
+								<td>{{equipe1}}</td>
+								<td> {{resultado1}}  </td>
+								<td> X </td>
+								<td>  {{resultado2}} </td>
+								<td>{{equipe2}}</td>
+							{{/if}}
+						</tr>
+					{{/partidas}}
+				{{/rodadas}}
+			</table>
+		</div>
+	</div>
+	<script src="/js/tela-editar.js"></script>
+</body>
+</html>

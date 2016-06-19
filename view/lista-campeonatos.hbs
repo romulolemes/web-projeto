@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+	<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
+	<title>Championship 2016</title>
+	<link rel="stylesheet" type="text/css" href="css/css_max.css" media="all and (min-width:920px)">
+	<link rel="stylesheet" type="text/css" href="css/css_min.css" media="all and (max-width:919px)">
+</head>
+
+<body>
+
+	<header>
+		<a href="index.html"><img src="imagens/logo.png" alt="Logo Games ON"></a>
+		<div id="header-login">
+			{{#if loginGamesOn}}
+				<p>Bem Vindo!</p>
+				<p>{{userGamesOn}}</p>
+				<a href="/logout"><button class="btn btn-lol">Sair</button></a>
+			{{else}}
+				<a href="registro.html"><button class="btn btn-lol">Registrar</button></a>
+				<a href="/login.html"><button class="btn btn-lol">Login</button></a>
+			{{/if}}
+		</div>
+	</header>
+	<div id="listCamp-box">
+		<h1 class="centralizar">Lista Campeonatos</h1>
+	</div>
+
+	<div id="listCamp-interno">
+		<div id="camp">
+			<div id="list-camp-img"><img src="imagens/camp1.jpg" alt="Campeonato 1"></div>
+			<a href="campeonato.html">
+				<div id="conteudo-camp">
+					<h3>Campeonato Xtreme League</h3>
+					<p>Quantidade de participantes - 8 participantes</p>
+					<p>50%</p>
+					<p>Vencedor - Em Andamento</p>
+				</div>
+			</a>
+		</div>
+
+		<div id="camp">
+			<div id="list-camp-img"><img src="imagens/camp2.png" alt="Campeonato 2"></div>
+			<a href="campeonato.html">
+				<div id="conteudo-camp">
+					<h3>Expansion Tournament & Circuit Points</h3>
+					<p>Quantidade de participantes - 4 participantes</p>
+					<p>80%</p>
+					<p>Vencedor - Em Andamento</p>
+				</div>
+			</a>
+		</div>
+
+		<div id="camp">
+			<div id="list-camp-img"><img src="imagens/camp3.jpg" alt="Campeonato 3"></div>
+			<a href="campeonato.html">
+				<div id="conteudo-camp">
+					<h3>Summoner's Rift</h3>
+					<p>Quantidade de participantes - 16 participantes</p>
+					<p>100%</p>
+					<p>Vencedor - Rômulo Rocha Lemes</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	{{#if loginGamesOn}}
+		<a href="novo-campeonato">
+			<div id="ticket">
+				<img src="imagens/t2.png" alt="Criar novo campeonato">
+			</div>
+		</a>
+	{{/if}}
+</body>
+</html>

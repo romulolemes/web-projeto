@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+	<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
+	<title>Championship 2016</title>
+	<link rel="stylesheet" type="text/css" href="css/css_max.css" media="all and (min-width:920px)">
+	<link rel="stylesheet" type="text/css" href="css/css_min.css" media="all and (max-width:919px)">
+</head>
+<body>
+	<header>
+		<a href="index.html"><img src="imagens/logo.png" alt="Logo Games ON"></a>
+		<div id="header-login">
+			{{#if loginGamesOn}}
+				<p>Bem Vindo!</p>
+				<p>{{userGamesOn}}</p>
+				<a href="/logout"><button class="btn btn-lol">Sair</button></a>
+			{{else}}
+				<a href="registro.html"><button class="btn btn-lol">Registrar</button></a>
+				<a href="/login.html"><button class="btn btn-lol">Login</button></a>
+			{{/if}}
+		</div>
+	</header>
+	<div id="listCamp-box">
+		<h1 class="centralizar">Criar Campeonato</h1>
+	</div>
+	<div id="listCamp-interno">
+		{{#if error}}
+		<div id="box-erro-registro">
+			<p>{{error}}</p>
+		</div>
+		{{/if}}
+		<fieldset>
+			<form action="novo-campeonato" method="POST">
+		 		<legend>Dados do Campeoanato</legend>
+				<div id="table-new-camp">
+					<p>
+						<label for="Nome">Nome: </label>
+						<input type="text" name="title-camp" required>
+					</p>
+					<!-- <p>
+						<label for="imagem">Imagem do Campeonato:</label>
+						<input type="file" name="image-camp" >
+					</p> -->
+
+					<div id="equipes-participantes">
+
+					</div>
+					<p>
+						Equipes
+					  <button type="button" id="adiciona-equipe">ADD</button>
+					  <button type="button" id="remover-equipes">Reset</button>
+					</p>
+					<input type="number" id="count-equipes" name="count-equipes" value='0' class="oculto">
+				</div>
+
+				<input type="submit" value="Criar Campeonato">
+				<input type="reset" value="Limpar">
+			</form>
+		</fieldset>
+	</div>
+	<script src="js/tela-novo-campeonato.js"></script>
+</body>
+</html>

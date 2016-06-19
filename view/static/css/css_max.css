@@ -599,3 +599,32 @@ a:active {
 .input-editar{
   width: 40px;
 }
+
+#listCamp-interno fieldset{
+  width: 900px;
+  margin: 0px auto;
+}
+
+#table-partidas input{
+  width: 35px;
+}
+
+#table-partidas .salvar-resultado{
+  background-image:url(../imagens/salvar.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  border: none;
+  padding: 0px;
+  width: 15px;
+}
+
+#table-partidas .salvar-resultado:hover{
+  background-image:url(../imagens/salvar.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  border: none;
+  padding: 0px;
+  width: 15px;
+}

@@ -2,10 +2,10 @@
   "name": "web-projeto",
   "version": "0.0.1",
   "description": "Trabalho pratico de programação WEB",
-  "main": "index.js",
+  "main": "./server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "/usr/bin/node  ./server/app.js"
+    "start": "node  ./server/app.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,10 @@
     "body-parser": "~1.15.1",
     "mongodb": "~2.1.18",
     "assert": "~1.4.1",
-    "multer": "~1.1.0"
+    "multer": "~1.1.0",
+    "method-override": "~2.3.6"
+  },
+  "engines" : {
+    "node": "0.10.x"
   }
 }

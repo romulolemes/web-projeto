@@ -1,0 +1,84 @@
+{
+	"_id": "5764aab1bf15097e625e844b",
+	"nome": "RomuloSSS",
+	"equipes": [
+		"romulo7",
+		"romulo8",
+		"romulo1",
+		"romulo5",
+		"romulo3",
+		"romulo6",
+		"romulo2",
+		"romulo4"
+	],
+	"partidasTotais": 7,
+	"partidasRealizadas": 6,
+	"loginGamesOn": "cm9tdWxvMDEtMTIzNDU2",
+	"quantidadeRodadas": 3,
+	"rodadas": [
+		{
+			"rodada": "1",
+			"partidas": [
+				{
+					"id": 0,
+					"equipe1": "romulo7",
+					"equipe2": "romulo6",
+					"resultado1": "",
+					"resultado2": ""
+				}
+			]
+		},
+		{
+			"rodada": "2",
+			"partidas": [
+				{
+					"id": 0,
+					"equipe1": "romulo7",
+					"equipe2": "romulo5",
+					"resultado1": "3",
+					"resultado2": "1"
+				},
+				{
+					"id": 1,
+					"equipe1": "romulo6",
+					"equipe2": "romulo2",
+					"resultado1": "4",
+					"resultado2": "2"
+				}
+			]
+		},
+		{
+			"rodada": "3",
+			"partidas": [
+				{
+					"id": 0,
+					"equipe1": "romulo7",
+					"equipe2": "romulo8",
+					"resultado1": "2",
+					"resultado2": "1"
+				},
+				{
+					"id": 1,
+					"equipe1": "romulo1",
+					"equipe2": "romulo5",
+					"resultado1": "0",
+					"resultado2": "3"
+				},
+				{
+					"id": 2,
+					"equipe1": "romulo3",
+					"equipe2": "romulo6",
+					"resultado1": "1",
+					"resultado2": "3"
+				},
+				{
+					"id": 3,
+					"equipe1": "romulo2",
+					"equipe2": "romulo4",
+					"resultado1": "3",
+					"resultado2": "1"
+				}
+			]
+		}
+	]
+}

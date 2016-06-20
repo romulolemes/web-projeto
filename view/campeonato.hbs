@@ -3,10 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-	<link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/imagens/favicon.ico" type="image/x-icon" />
 	<title>Championship 2016</title>
-	<link rel="stylesheet" type="text/css" href="../css/css_max.css" media="screen and (min-width:920px)">
-	<link rel="stylesheet" type="text/css" href="../css/css_min.css" media="screen and (max-width:919px)">
+	<link rel="stylesheet" type="text/css" href="/css/css_max.css" media="screen">
 	<style>
 	.percentage-value{
 			width: {{porcentagem}};
@@ -16,20 +15,20 @@
 
 <body>
 	<header>
-		<a href="../index.html"><img src="../imagens/logo.png" alt="Logo Games ON"></a>
+		<a href="/index.html"><img src="/imagens/logo.png" alt="Logo Games ON"></a>
 		<div id="header-login">
 			{{#if loginGamesOn}}
 				<p>Bem Vindo!</p>
 				<p>{{userGamesOn}}</p>
 				<a href="/logout"><button class="btn btn-lol">Sair</button></a>
 			{{else}}
-				<a href="registro.html"><button class="btn btn-lol">Registrar</button></a>
+				<a href="/registro.html"><button class="btn btn-lol">Registrar</button></a>
 				<a href="/login.html"><button class="btn btn-lol">Login</button></a>
 			{{/if}}
 		</div>
 	</header>
 	<div id="camp-title">
-		<img src="../imagens/camp3.jpg" alt="Campeonato RMA">
+		<a href="lista-campeonatos" class='centraliza-vertical'><button class="btn btn-lol">Campeonatos</button></a>
 		<div id="camp-title-box">
 			<h1 class="centralizar"> {{nome}} </h1>
 
@@ -45,8 +44,8 @@
 		</div>
 		<div id="botao-editar">
 			{{#if editar}}
-				<a href="../editar/{{id}}">
-					<img id="img-editar" src="../imagens/editar.png" alt="Editar Campeonato">
+				<a href="/editar/{{id}}">
+					<img id="img-editar" src="/imagens/editar.png" alt="Editar Campeonato">
 				</a>
 			{{/if}}
 		</div>

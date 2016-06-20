@@ -5,8 +5,7 @@
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
 	<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
 	<title>Championship 2016</title>
-	<link rel="stylesheet" type="text/css" href="css/css_max.css" media="all and (min-width:920px)">
-	<link rel="stylesheet" type="text/css" href="css/css_min.css" media="all and (max-width:919px)">
+	<link rel="stylesheet" type="text/css" href="/css/css_max.css" media="screen">
 </head>
 <body>
 	<header>
@@ -17,7 +16,7 @@
 				<p>{{userGamesOn}}</p>
 				<a href="/logout"><button class="btn btn-lol">Sair</button></a>
 			{{else}}
-				<a href="registro.html"><button class="btn btn-lol">Registrar</button></a>
+				<a href="/registro.html"><button class="btn btn-lol">Registrar</button></a>
 				<a href="/login.html"><button class="btn btn-lol">Login</button></a>
 			{{/if}}
 		</div>
@@ -33,7 +32,7 @@
 		{{/if}}
 		<fieldset>
 			<form action="novo-campeonato" method="POST">
-		 		<legend>Dados do Campeoanato</legend>
+		 		<h2 class="centralizar">Dados do Campeoanato</h2>
 				<div id="table-new-camp">
 					<p>
 						<label for="Nome">Nome: </label>
@@ -49,14 +48,14 @@
 					</div>
 					<p>
 						Equipes
-					  <button type="button" id="adiciona-equipe">ADD</button>
-					  <button type="button" id="remover-equipes">Reset</button>
+					  <button type="button" id="adiciona-equipe" class='botao'>ADD</button>
+					  <button type="button" id="remover-equipes" class='botao'>Reset</button>
 					</p>
 					<input type="number" id="count-equipes" name="count-equipes" value='0' class="oculto">
 				</div>
 
-				<input type="submit" value="Criar Campeonato">
-				<input type="reset" value="Limpar">
+				<input type="submit" value="Criar Campeonato" class='botao'>
+				<input type="reset" value="Limpar" class='botao'>
 			</form>
 		</fieldset>
 	</div>

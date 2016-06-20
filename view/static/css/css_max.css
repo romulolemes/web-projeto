@@ -29,8 +29,8 @@ header p{
 
 #header-login {
   float: right;
-  margin-top: 4%;
-  margin-right: 5%;
+  margin-top: 2.5%;
+  margin-right: 2.5%;
 }
 
 #header-login .btn-lol{
@@ -113,6 +113,7 @@ section p{
 
 section img{
   width:70%;
+  min-width: 500px;
 }
 
 footer {
@@ -304,10 +305,8 @@ footer {
   margin-left:25px;
 }
 
-#botao{
-  float:right;
+.botao{
   background-color: #cccccc;
-  padding: 5px 15px;
   font: bold 12px sans-serif;
   border-radius: 20px;
   text-shadow: 0px 1px 0px white;
@@ -317,7 +316,7 @@ footer {
   margin-bottom: 5px;
 }
 
-#botao:active{
+.botao:active{
   position: relative;
   top:5px;
   box-shadow: none;
@@ -408,7 +407,6 @@ a:active {
 }
 
 #list-camp-img{
-  width: 200px;
   height: 150px;
   margin: 15px;
   overflow: hidden;
@@ -418,7 +416,7 @@ a:active {
 
 #conteudo-camp{
   position: absolute;
-  width: 700px;
+  width: 875px;
   display: inline-block;
   margin: 15px;
   box-shadow: 0px 0px 5px;
@@ -578,6 +576,7 @@ a:active {
 
 #list-participates{
   list-style-type:none;
+  padding-left: 0px;
 }
 
 #table-partidas{
@@ -627,4 +626,28 @@ a:active {
   border: none;
   padding: 0px;
   width: 15px;
+}
+
+.dis-inline{
+  display: inline;
+}
+
+.centraliza-vertical{
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.centraliza-vertical{
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+#camp-title > a{
+  padding-left: 5px;
+}
+
+#header-link{
+  display: inline-block;
 }

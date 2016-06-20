@@ -1,6 +1,6 @@
 var express = require('express'),
 app = express(),
-port = 3000,
+port = process.env.PORT || 8080,
 cookieParser = require('cookie-parser'),
 bodyParser = require('body-parser'),
 MongoClient = require('mongodb').MongoClient,
@@ -8,7 +8,8 @@ assert = require('assert'),
 multer = require('multer'),
 upload = multer(),
 ObjectId = require('mongodb').ObjectId,
-_ = require('underscore');
+_ = require('underscore'),
+methodOverride = require('method-override');
 
 var urlDB = 'mongodb://root:cefet17web@jello.modulusmongo.net:27017/a2dosAqa';
 // MongoClient.connect(urlDB, function(err, db) {
@@ -19,10 +20,12 @@ var urlDB = 'mongodb://root:cefet17web@jello.modulusmongo.net:27017/a2dosAqa';
 app.use(express.static(__dirname + '/../view/static/'));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride());
+app.use(cookieParser());
+
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/../view/');
-app.use(cookieParser());
 
 app.get('/', function(req, res) {
   logRoute(req);
@@ -186,19 +189,6 @@ app.get('/logout', function(req, res) {
   res.clearCookie('userGamesOn');
   console.log('---------------------------------------');
   res.render('index' , '');
-});
-
-app.get('/lista-campeonatos', function(req, res) {
-  logRoute(req);
-  var loginGamesOn = req.cookies.loginGamesOn;
-  var userGamesOn = req.cookies.userGamesOn;
-  console.log(userGamesOn + '-' + loginGamesOn);
-  var dados = {
-    loginGamesOn: loginGamesOn,
-    userGamesOn: userGamesOn
-  };
-  console.log('---------------------------------------');
-  res.render('lista-campeonatos.hbs' , dados);
 });
 
 app.get('/novo-campeonato', function(req, res) {
@@ -469,13 +459,58 @@ app.get('/editar/:id', function (req, res) {
           }
         }
       }
+      dados.vencedor = championships[0].vencedor;
       console.log(dados);
       console.log('---------------------------------------');
       res.render('editar.hbs' , dados);
       db.close();
     });
   });
+});
 
+app.get('/lista-campeonatos', function(req, res) {
+  logRoute(req);
+  var loginGamesOn = req.cookies.loginGamesOn;
+  var userGamesOn = req.cookies.userGamesOn;
+  console.log(userGamesOn + '-' + loginGamesOn);
+  var dados = {
+    loginGamesOn: loginGamesOn,
+    userGamesOn: userGamesOn
+  };
+
+  MongoClient.connect(urlDB, function(err, db) {
+    if(err){
+      console.log(err);
+      console.log('---------------------------------------');
+      res.redirect(301, '/');
+      return;
+    }
+    console.log("Connected correctly to server.");
+    db.collection('championships').find({ }
+    ).toArray(function(err, championships) {
+      if(err){
+        console.log(err);
+        console.log('---------------------------------------');
+        res.redirect(301, '/');
+        return;
+      }
+      var campeonatos = [];
+      for (var index in championships) {
+        var aux = {};
+        aux.id = championships[index]._id;
+        aux.nome = championships[index].nome;
+        aux.countEquipes = championships[index].equipes.length;
+        var porc = (championships[index].partidasRealizadas / championships[index].partidasTotais) * 100;
+        aux.porcentagem = parseFloat(porc).toFixed(2) + "%";
+        aux.vencedor = championships[index].vencedor;
+        campeonatos[index] = aux;
+      }
+      dados.campeonatos = campeonatos;
+      console.log(JSON.stringify(dados, null, '\t'));
+      console.log('---------------------------------------');
+      res.render('lista-campeonatos.hbs' , dados);
+    });
+  });
 });
 
 app.post('/editar', function (req, res) {
@@ -530,34 +565,8 @@ app.post('/editar', function (req, res) {
         return;
       }
 
-      // dados.id = req.body.campeonato;
-      // dados.equipes = championships[0].equipes;
-      // dados.nome = championships[0].nome;
-      // championships[0].partidasRealizadas++;
-      // dados.porcentagem = ((championships[0].partidasRealizadas / championships[0].partidasTotais) * 100) + "%";
-      // dados.rodadas = championships[0].rodadas;
-      // dados.RodadaMax = dados.rodadas.length;
-      // dados.idMax = 0;
-      // for (var i in dados.rodadas){
-      //   var partidasNew = dados.rodadas[i].partidas;
-      //   dados.idMax = Math.max(partidasNew.length, dados.idMax);
-      //   for (var j in partidasNew){
-      //     if(checkNewRodada.test(partidasNew[j].equipe1) ||
-      //         checkNewRodada.test(partidasNew[j].equipe2)){
-      //       partidasNew[j].editavel = null;
-      //     }else{
-      //       partidasNew[j].editavel = true;
-      //     }
-      //
-      //     if(partidasNew[j].resultado1 !== ''){
-      //       partidasNew[j].editavel = null;
-      //     }
-      //   }
-      // }
       var rodadasInd = championships[0].rodadas;
       championships[0].partidasRealizadas++;
-      var index = parseInt(req.body.rodada);
-      console.log(rodadasInd);
       var rodadaAtual = _.where(rodadasInd ,{ rodada: req.body.rodada });
       var partidaAtual = _.where(rodadaAtual[0].partidas, { id: parseInt(req.body.id) });
       partidaAtual[0].resultado1 = req.body['resultado-equipe1'];
@@ -575,34 +584,49 @@ app.post('/editar', function (req, res) {
       var rodadaAtualizada = _.where(rodadasInd, condWhere);
 
       console.log("partidaAtual---------------------");
-      var equipeAtualizar = '@id' + req.body.id + '#R' + req.body.rodada;
-      for (var x in rodadaAtualizada[0].partidas) {
-        console.log(rodadaAtualizada[0].partidas[x]);
-        if(rodadaAtualizada[0].partidas[x].equipe1 === equipeAtualizar){
-          rodadaAtualizada[0].partidas[x].equipe1 = equipeWin;
+      if(req.body.rodada !== '1'){
+        var equipeAtualizar = '@id' + req.body.id + '#R' + req.body.rodada;
+        for (var x in rodadaAtualizada[0].partidas) {
+          if(rodadaAtualizada[0].partidas[x].equipe1 === equipeAtualizar){
+            rodadaAtualizada[0].partidas[x].equipe1 = equipeWin;
+          }
+          if(rodadaAtualizada[0].partidas[x].equipe2 === equipeAtualizar){
+            rodadaAtualizada[0].partidas[x].equipe2 = equipeWin;
+          }
         }
-        if(rodadaAtualizada[0].partidas[x].equipe2 === equipeAtualizar){
-          rodadaAtualizada[0].partidas[x].equipe2 = equipeWin;
-        }
+      }else{
+        championships[0].vencedor = equipeWin;
       }
       db.collection('championships').save(championships[0],function(err, result) {
         if(err){
           console.log(err);
           console.log('---------------------------------------');
-          console.log(JSON.stringify(championships[0]));
-          res.redirect(301 , '/editar/5764aab1bf15097e625e844b');
           return;
+          res.redirect(301 , '/editar/' + championships[0]._id);
         }
-
-        console.log(result);
+        console.log(result.result);
         console.log('---------------------------------------');
-        console.log(JSON.stringify(championships[0]));
-        res.redirect(301 , '/editar/5764aab1bf15097e625e844b');
+        console.log(JSON.stringify(championships[0], null, '\t'));
+        res.redirect(301 , '/editar/' + championships[0]._id);
         db.close();
-
       });
     });
   });
+});
+
+app.get('*', function(req, res, next) {
+  var err = new Error();
+  err.status = 404;
+  next(err);
+});
+
+// handling 404 errors
+app.use(function(err, req, res, next) {
+  if(err.status !== 404) {
+    return next();
+  }
+
+    res.render('erro', {});
 });
 
 var server = app.listen(port, function () {

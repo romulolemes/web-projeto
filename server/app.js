@@ -647,7 +647,6 @@ function shuffle(array) {
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
-  var naoJogados = _.where(jogosDoJogador.games,{ playtime_forever: 0 });
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;

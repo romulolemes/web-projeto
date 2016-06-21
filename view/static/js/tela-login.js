@@ -53,7 +53,7 @@ function login(e){
 							boxErroRegistro.innerHTML = response.message;
 						}
 					}else{
-							alert(request.responseText);
+							// alert(request.responseText);
 					}
 				}
 		}

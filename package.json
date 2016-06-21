@@ -1,6 +1,6 @@
 {
   "name": "web-projeto",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Trabalho pratico de programação WEB",
   "main": "./server/app.js",
   "scripts": {

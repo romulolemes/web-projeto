@@ -46,6 +46,10 @@ section {
   float: left;
 }
 
+section img{
+  width:70%;
+}
+
 section p{
   padding-top: 20px;
   padding-left: 100px;
